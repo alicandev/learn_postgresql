@@ -12,3 +12,8 @@ CREATE VIEW manufacturing.product_details AS
 			
 	WHERE market = 'industrial'
 ;
+
+SELECT * 
+FROM manufacturing.product_details
+WHERE category_name = 'wind harvesters'
+;

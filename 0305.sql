@@ -1,9 +1,12 @@
--- Table: human_resources.employees
+CREATE TABLE human_resources.departments (
+    department_id integer NOT NULL,
+    department_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    building character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT departments_pkey PRIMARY KEY (department_id)
+) TABLESPACE pg_default;
+ALTER TABLE human_resources.departments OWNER to postgres;
 
--- DROP TABLE human_resources.employees;
-
-CREATE TABLE human_resources.employees
-(
+CREATE TABLE human_resources.employees (
     employee_id integer NOT NULL,
     first_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
     last_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
@@ -14,9 +17,5 @@ CREATE TABLE human_resources.employees
         REFERENCES human_resources.departments (department_id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE NO ACTION
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE human_resources.employees
-    OWNER to postgres;
+)TABLESPACE pg_default;
+ALTER TABLE human_resources.employees OWNER to postgres;

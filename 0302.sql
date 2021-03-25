@@ -1,9 +1,12 @@
--- Table: manufacturing.products
+CREATE TABLE manufacturing.categories (
+    category_id integer NOT NULL,
+    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    market character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT categories_pkey PRIMARY KEY (category_id)
+) TABLESPACE pg_default;
+ALTER TABLE manufacturing.categories OWNER to postgres;
 
--- DROP TABLE manufacturing.products;
-
-CREATE TABLE manufacturing.products
-(
+CREATE TABLE manufacturing.products (
     product_id character varying(10) COLLATE pg_catalog."default" NOT NULL,
     name character varying(100) COLLATE pg_catalog."default" NOT NULL,
     power integer,
@@ -14,9 +17,5 @@ CREATE TABLE manufacturing.products
         REFERENCES manufacturing.categories (category_id) MATCH SIMPLE
         ON UPDATE CASCADE
         ON DELETE NO ACTION
-)
-
-TABLESPACE pg_default;
-
-ALTER TABLE manufacturing.products
-    OWNER to postgres;
+) TABLESPACE pg_default;
+ALTER TABLE manufacturing.products OWNER to postgres;
